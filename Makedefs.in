@@ -13,6 +13,9 @@
 #   file is missing or damaged, see the license at "http://www.cups.org/".
 #
 
+DSTROOT		=	$(DESTDIR)
+HOST_CXX	=	g++
+HOST_CC		=	gcc
 #
 # Programs...
 #
@@ -139,7 +142,7 @@ BACKLIBS	=	@BACKLIBS@
 BANNERTOPS	=	@BANNERTOPS@
 BUILDDIRS	=	@BUILDDIRS@
 CFLAGS		=	@CPPFLAGS@ @CFLAGS@
-COMMONLIBS	=	@LIBS@
+COMMONLIBS	=	@LIBS@ -liconv -lresolv -ldl -lrt
 CXXFLAGS	=	@CPPFLAGS@ @CXXFLAGS@
 CXXLIBS		=	@CXXLIBS@
 DBUS_NOTIFIER	=	@DBUS_NOTIFIER@

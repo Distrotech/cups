@@ -227,8 +227,15 @@ html:	$(MAN1) $(MAN5) $(MAN7) $(MAN8) mantohtml
 		./mantohtml `basename $$file .$(MAN8EXT)`.man >../doc/help/man-`basename $$file .$(MAN8EXT)`.html; \
 	done
 
+mantohtml.o:
+	echo $(HOST_CC) mantohtml.c -c -I../
+	$(HOST_CC) mantohtml.c -c -I../
+
 mantohtml:	mantohtml.o
-	$(CC) $(ARCHFLAGS) $(LDFLAGS) -o $@ mantohtml.o
+	echo $(LDFLAGS)
+	echo $(ARCHFLAGS)
+	echo $(HOST_CC) -o $@ mantohtml.o
+	$(HOST_CC) -o $@ mantohtml.o
 
 
 #
