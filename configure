@@ -690,7 +690,6 @@ ARCHFLAGS
 UNITTESTS
 OPTIM
 INSTALL_STRIP
-LIBTOOL
 EXPORT_LDFLAGS
 IMGLIBS
 DSOLIBS
@@ -870,7 +869,6 @@ with_logdir
 enable_32bit
 enable_64bit
 enable_shared
-enable_libtool_unsupported
 with_optim
 enable_debug
 enable_debug_guards
@@ -1573,8 +1571,6 @@ Optional Features:
   --enable-32bit          generate 32-bit libraries on 32/64-bit systems
   --enable-64bit          generate 64-bit libraries on 32/64-bit systems
   --disable-shared        do not create shared libraries
-  --enable-libtool-unsupported
-                          build with libtool (UNSUPPORTED!)
   --enable-debug          build with debugging symbols
   --enable-debug-guards   build with memory allocation guards
   --enable-debug-printfs  build with CUPS_DEBUG_LOG support
@@ -5961,11 +5957,6 @@ if test "$libdir" = "\${exec_prefix}/lib"; then
 		IRIX*)
 			libdir="$exec_prefix/lib32"
 			;;
-		Linux*)
-			if test -d /usr/lib64; then
-				libdir="$exec_prefix/lib64"
-			fi
-			;;
 		HP-UX*)
 			if test -d /usr/lib/hpux32; then
 				libdir="$exec_prefix/lib/hpux32"
@@ -6894,35 +6885,6 @@ if test "$DSO" != ":"; then
 else
 	DSOLIBS=""
 	IMGLIBS="\$(LIBTIFF) \$(LIBPNG) \$(LIBJPEG) \$(LIBZ)"
-fi
-
-
-
-
-
-
-
-# Check whether --enable-libtool_unsupported was given.
-if test "${enable_libtool_unsupported+set}" = set; then :
-  enableval=$enable_libtool_unsupported; if test x$enable_libtool_unsupported != xno; then
-		LIBTOOL="$enable_libtool_unsupported"
-		enable_shared=no
-		echo "WARNING: libtool is not supported or endorsed by Apple Inc."
-		echo "         WE DO NOT PROVIDE SUPPORT FOR LIBTOOL PROBLEMS."
-	else
-		LIBTOOL=""
-	fi
-fi
-
-
-
-
-if test x$LIBTOOL != x; then
-	LIBCUPS="libcups.la"
-	LIBCUPSIMAGE="libcupsimage.la"
-	LINKCUPS="../cups/\$(LIBCUPS)"
-	LINKCUPSIMAGE="../filter/\$(LIBCUPSIMAGE)"
-	DSO="\$(CC)"
 fi
 
 

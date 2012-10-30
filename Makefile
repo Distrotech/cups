@@ -97,7 +97,6 @@ clean:
 #
 
 distclean:	clean
-	$(RM) Makedefs config.h config.log config.status
 	$(RM) cups-config
 	$(RM) conf/cupsd.conf conf/mime.convs conf/pam.std conf/snmp.conf
 	$(RM) doc/help/ref-cupsd-conf.html doc/help/standard.html doc/index.html
@@ -114,6 +113,8 @@ distclean:	clean
 	-$(RM) doc/*/index.html
 	-$(RM) templates/*/header.tmpl
 	-$(RM) -r autom4te*.cache clang cups/charmaps cups/locale driver/test
+	$(RM) Makedefs config.h config.log config.status
+	touch Makedefs
 
 
 #

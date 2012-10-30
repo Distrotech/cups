@@ -387,8 +387,8 @@ libcups_s.a:	$(LIBOBJS) libcups_s.exp
 
 libcups.la:    $(LIBOBJS)
 	echo Linking $@...
-	$(CC) $(ARCHFLAGS) $(DSOFLAGS) -o $@ $(LIBOBJS:.o=.lo) \
-		-rpath $(LIBDIR) -version-info 2:9 $(LIBGSSAPI) $(SSLLIBS) \
+	$(CC) $(ARCHFLAGS) $(DSOFLAGS) -o $@ $(LIBOBJS:.o=.o) \
+		$(LIBDIR) $(LIBGSSAPI) $(SSLLIBS) \
 		$(DNSSDLIBS) $(COMMONLIBS) $(LIBZ)
 
 
