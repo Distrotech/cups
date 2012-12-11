@@ -293,7 +293,7 @@ framedhelp:
 bannertops:	bannertops.o pstext.o common.o ../cups/$(LIBCUPS) $(LIBCUPSIMAGE)
 	echo Linking $@...
 	$(CC) $(LDFLAGS) -o $@ bannertops.o pstext.o common.o $(LINKCUPSIMAGE) \
-		$(IMGLIBS) $(LIBS)
+		$(IMGLIBS) $(LIBS) -lpng15
 
 
 #
@@ -358,7 +358,7 @@ libcupsimage.2.dylib:	$(IMAGEOBJS) $(LIBCUPSIMAGEORDER)
 		-install_name $(libdir)/$@ \
 		-current_version 2.3.0 \
 		-compatibility_version 2.0.0 \
-		$(IMAGEOBJS) $(DSOLIBS) -L../cups $(LINKCUPS)
+		$(IMAGEOBJS) $(DSOLIBS) -L../cups $(LINKCUPS) $(IMGLIBS) $(LIBS)
 	$(RM) libcupsimage.dylib
 	$(LN) $@ libcupsimage.dylib
 
@@ -383,7 +383,7 @@ libcupsimage.la:       $(IMAGEOBJS)
 	echo Linking $@...
 	$(DSO) $(ARCHFLAGS) $(DSOFLAGS) -o $@ $(IMAGEOBJS:.o=.lo) $(DSOLIBS) \
 		-L../cups $(LINKCUPS) \
-		-rpath $(LIBDIR) -version-info 2:3
+		-rpath $(LIBDIR) -version-info 2:3 $(IMGLIBS) $(LIBS)
 
 
 #

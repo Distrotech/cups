@@ -243,7 +243,7 @@ genstrings:		genstrings.o libcupsppdc.a ../cups/$(LIBCUPSSTATIC) \
 			sample.drv ../data/media.defs
 	echo Linking $@...
 	$(HOST_CXX) $(ARCHFLAGS) -L/build/i686/usr/lib -o genstrings genstrings.o \
-		-lcupsppdc -lcups $(LIBGSSAPI) $(SSLLIBS) \
+		-lcupsppdc -lcups $(SSLLIBS) \
 		$(DNSSDLIBS) $(COMMONLIBS) $(LIBZ) -L./ -L../cups -lcupsppdc -lcups -lstdc++
 	echo Generating localization strings...
 	(export LD_LIBRARY_PATH=/usr/lib64:.:../cups;./genstrings >sample.c)
