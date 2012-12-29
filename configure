@@ -7101,13 +7101,13 @@ rm -f core conftest.err conftest.$ac_objext conftest.$ac_ext
 
 		# Additional warning options for development testing...
 		if test -d .svn; then
-			OPTIM="-Wshadow -Werror $OPTIM"
+			OPTIM="-Wshadow $OPTIM"
 			PHPOPTIONS="-Wno-shadow"
 		else
 			{ $as_echo "$as_me:${as_lineno-$LINENO}: checking if GCC supports -Wno-tautological-compare" >&5
 $as_echo_n "checking if GCC supports -Wno-tautological-compare... " >&6; }
 			OLDCFLAGS="$CFLAGS"
-			CFLAGS="$CFLAGS -Werror"
+			CFLAGS="$CFLAGS"
 			cat confdefs.h - <<_ACEOF >conftest.$ac_ext
 /* end confdefs.h.  */
 
