@@ -13,6 +13,8 @@
 #   file is missing or damaged, see the license at "http://www.cups.org/".
 #
 
+DSTROOT		=	$(DESTDIR)
+
 #
 # Programs...
 #
