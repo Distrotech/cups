@@ -88,9 +88,9 @@ typedef struct
 static const cupsd_var_t	cupsd_vars[] =
 {
   { "AutoPurgeJobs", 		&JobAutoPurge,		CUPSD_VARTYPE_BOOLEAN },
-#ifdef HAVE_DNSSD
+#if defined(HAVE_DNSSD) || defined(HAVE_AVAHI)
   { "BrowseDNSSDSubTypes",	&DNSSDSubTypes,		CUPSD_VARTYPE_STRING },
-#endif /* HAVE_DNSSD */
+#endif /* HAVE_DNSSD || HAVE_AVAHI */
   { "BrowseWebIF",		&BrowseWebIF,		CUPSD_VARTYPE_BOOLEAN },
   { "Browsing",			&Browsing,		CUPSD_VARTYPE_BOOLEAN },
   { "Classification",		&Classification,	CUPSD_VARTYPE_STRING },
@@ -743,9 +743,9 @@ cupsdReadConfiguration(void)
   Browsing                 = CUPS_DEFAULT_BROWSING;
   DefaultShared            = CUPS_DEFAULT_DEFAULT_SHARED;
 
-#ifdef HAVE_DNSSD
+#if defined(HAVE_DNSSD) || defined(HAVE_AVAHI)
   cupsdSetString(&DNSSDSubTypes, "_cups,_print");
-#endif /* HAVE_DNSSD */
+#endif /* HAVE_DNSSD || HAVE_AVAHI */
 
   cupsdSetString(&LPDConfigFile, CUPS_DEFAULT_LPD_CONFIG_FILE);
   cupsdSetString(&SMBConfigFile, CUPS_DEFAULT_SMB_CONFIG_FILE);
