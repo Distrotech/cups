@@ -125,7 +125,7 @@ depend:
 
 dbus:	dbus.o ../cups/$(LIBCUPS)
 	echo Linking $@...
-	$(CC) $(LDFLAGS) -o dbus dbus.o $(DBUS_NOTIFIERLIBS) $(LIBS)
+	$(CC) $(LDFLAGS) -o dbus dbus.o $(DBUS_NOTIFIERLIBS) $(LIBS) ../cups/$(LIBCUPSSTATIC)
 
 
 #
@@ -134,7 +134,7 @@ dbus:	dbus.o ../cups/$(LIBCUPS)
 
 mailto:	mailto.o ../cups/$(LIBCUPS)
 	echo Linking $@...
-	$(CC) $(LDFLAGS) -o mailto mailto.o $(LIBS)
+	$(CC) $(LDFLAGS) -o mailto mailto.o $(LIBS) ../cups/$(LIBCUPSSTATIC)
 
 
 #
@@ -152,7 +152,7 @@ rss:	rss.o ../cups/$(LIBCUPS)
 
 testnotify:	testnotify.o ../cups/$(LIBCUPS)
 	echo Linking $@...
-	$(CC) $(LDFLAGS) -o testnotify testnotify.o $(LIBS)
+	$(CC) $(LDFLAGS) -o testnotify testnotify.o $(LIBS) ../cups/$(LIBCUPSSTATIC)
 
 
 $(OBJS):	../Makedefs

@@ -250,7 +250,7 @@ dnssd:	dnssd.o ../cups/$(LIBCUPS) libbackend.a
 
 ipp:	ipp.o ../cups/$(LIBCUPS) libbackend.a
 	echo Linking $@...
-	$(CC) $(LDFLAGS) -o ipp ipp.o libbackend.a $(LIBS)
+	$(CC) $(LDFLAGS) -o ipp ipp.o libbackend.a $(LIBS) ../cups/$(LIBCUPSSTATIC)
 	$(RM) http
 	$(LN) ipp http
 

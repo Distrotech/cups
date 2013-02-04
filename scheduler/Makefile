@@ -381,7 +381,7 @@ cupsd:	$(CUPSDOBJS) $(LIBCUPSMIME) ../cups/$(LIBCUPS)
 	$(CC) $(LDFLAGS) -o cupsd $(CUPSDOBJS) -L. -lcupsmime \
 		$(LIBZ) $(SSLLIBS) $(LIBSLP) $(LIBLDAP) $(PAMLIBS) \
 		$(LIBPAPER) $(LIBMALLOC) $(SERVERLIBS) $(DNSSDLIBS) $(LIBS) \
-		$(LIBGSSAPI) $(LIBWRAP)
+		$(LIBGSSAPI) $(LIBWRAP) ../cups/$(LIBCUPSSTATIC)
 
 cupsd-static:	$(CUPSDOBJS) libcupsmime.a ../cups/$(LIBCUPSSTATIC)
 	echo Linking $@...
@@ -400,7 +400,7 @@ tls.o:	tls-darwin.c tls-gnutls.c tls-openssl.c
 
 cupsfilter:	cupsfilter.o $(LIBCUPSMIME) ../cups/$(LIBCUPS)
 	echo Linking $@...
-	$(CC) $(LDFLAGS) -o cupsfilter cupsfilter.o -L. -lcupsmime $(LIBS)
+	$(CC) $(LDFLAGS) -o cupsfilter cupsfilter.o -L. -lcupsmime $(LIBS) ../cups/$(LIBCUPSSTATIC)
 	$(RM) convert
 	$(LN) cupsfilter convert
 
