@@ -217,9 +217,11 @@ html:	$(MAN1) $(MAN5) $(MAN7) $(MAN8) mantohtml
 		./mantohtml `basename $$file .$(MAN8EXT)`.man >../doc/help/man-`basename $$file .$(MAN8EXT)`.html; \
 	done
 
-mantohtml:	mantohtml.o
-	$(CC) $(ARCHFLAGS) $(LDFLAGS) -o $@ mantohtml.o
+mantohtml.o:
+	$(HOST_CC) -fPIC mantohtml.c -c -I../
 
+mantohtml:	mantohtml.o
+	$(HOST_CC) $(ARCHFLAGS) $(LDFLAGS) -o $@ mantohtml.o
 
 #
 # End of "$Id: Makefile 11024 2013-06-06 23:11:13Z msweet $".

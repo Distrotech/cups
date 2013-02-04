@@ -239,11 +239,14 @@ framedhelp:
 # genstrings - generate GNU gettext strings.
 #
 
+genstrings.o:
+	$(HOST_CXX) -fPIC genstrings.cxx -c -o $@ -I../
+
 genstrings:		genstrings.o libcupsppdc.a ../cups/$(LIBCUPSSTATIC) \
 			sample.drv ../data/media.defs
 	echo Linking $@...
-	$(CXX) $(ARCHFLAGS) $(LDFLAGS) -o genstrings genstrings.o \
-		libcupsppdc.a ../cups/$(LIBCUPSSTATIC) $(LIBGSSAPI) $(SSLLIBS) \
+	$(HOST_CXX) $(ARCHFLAGS) $(LDFLAGS) -o genstrings genstrings.o \
+		-lcupsppdc -lcups $(LIBGSSAPI) $(SSLLIBS) \
 		$(DNSSDLIBS) $(COMMONLIBS) $(LIBZ)
 	echo Generating localization strings...
 	./genstrings >sample.c
