@@ -158,11 +158,11 @@ if test -n "$GCC"; then
 
 		# Additional warning options for development testing...
 		if test -d .svn; then
-			OPTIM="-Wshadow -Werror $OPTIM"
+			OPTIM="-Wshadow $OPTIM"
 		else
 			AC_MSG_CHECKING(if GCC supports -Wno-tautological-compare)
 			OLDCFLAGS="$CFLAGS"
-			CFLAGS="$CFLAGS -Werror -Wno-tautological-compare"
+			CFLAGS="$CFLAGS -Wno-tautological-compare"
 			AC_TRY_COMPILE(,,
 				[OPTIM="$OPTIM -Wno-tautological-compare"
 				AC_MSG_RESULT(yes)],
