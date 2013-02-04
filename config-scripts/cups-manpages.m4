@@ -69,10 +69,10 @@ case "$uname" in
 		;;
 	Linux* | GNU* | Darwin*)
 		# Linux, GNU Hurd, and OS X
-		MAN1EXT=1.gz
-		MAN5EXT=5.gz
-		MAN7EXT=7.gz
-		MAN8EXT=8.gz
+		MAN1EXT=1
+		MAN5EXT=5
+		MAN7EXT=7
+		MAN8EXT=8
 		MAN8DIR=8
 		;;
 	*)
