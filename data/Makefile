@@ -86,14 +86,14 @@ install:	all install-data install-headers install-libs install-exec
 #
 
 install-data:
-	$(INSTALL_DIR) -m 755 $(DATADIR)/banners
-	for file in $(BANNERS); do \
-		$(INSTALL_DATA) $$file $(DATADIR)/banners; \
-	done
-	$(INSTALL_DIR) -m 755 $(DATADIR)/data
-	for file in $(DATAFILES); do \
-		$(INSTALL_DATA) $$file $(DATADIR)/data; \
-	done
+#	$(INSTALL_DIR) -m 755 $(DATADIR)/banners
+#	for file in $(BANNERS); do \
+#		$(INSTALL_DATA) $$file $(DATADIR)/banners; \
+#	done
+#	$(INSTALL_DIR) -m 755 $(DATADIR)/data
+#	for file in $(DATAFILES); do \
+#		$(INSTALL_DATA) $$file $(DATADIR)/data; \
+#	done
 	$(INSTALL_DIR) -m 755 $(DATADIR)/model
 	$(INSTALL_DIR) -m 755 $(DATADIR)/ppdc
 	for file in $(PPDCFILES); do \
@@ -128,20 +128,20 @@ install-libs:
 #
 
 uninstall:
-	for file in $(BANNERS); do \
-		$(RM) $(DATADIR)/banners/$$file; \
-	done
-	for file in $(DATAFILES); do \
-		$(RM) $(DATADIR)/data/$$file; \
-	done
+#	for file in $(BANNERS); do \
+#		$(RM) $(DATADIR)/banners/$$file; \
+#	done
+#	for file in $(DATAFILES); do \
+#		$(RM) $(DATADIR)/data/$$file; \
+#	done
 	for file in $(PPDCFILES); do \
 		$(RM) $(DATADIR)/ppdc/$$file; \
 	done
 	-$(RMDIR) $(DATADIR)/profiles
 	-$(RMDIR) $(DATADIR)/ppdc
 	-$(RMDIR) $(DATADIR)/model
-	-$(RMDIR) $(DATADIR)/data
-	-$(RMDIR) $(DATADIR)/banners
+#	-$(RMDIR) $(DATADIR)/data
+#	-$(RMDIR) $(DATADIR)/banners
 	-$(RMDIR) $(DATADIR)
 
 
